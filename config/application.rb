@@ -61,7 +61,7 @@ module GratitudeData
 
     #grape
     config.paths.add "app/api", glob: "**/*.rb"
-    config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
-    
+    config.autoload_paths += Dir["#{Rails.root}/app/api/"]
+
   end
 end
