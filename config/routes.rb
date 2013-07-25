@@ -1,7 +1,7 @@
 require 'grape'
 GratitudeData::Application.routes.draw do
   resources :gem_data
-  mount GemData::API => "/api"
+  mount ApiInterface::API => "/api"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
