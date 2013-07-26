@@ -15,7 +15,8 @@ module ApiInterface
       status 201
       @gem_data
       end 
-      #curl -X POST "http://localhost:3000/api/data/helloup.json"
+      #curl -X POST "http://localhost:3001/api/data/helloup.json"
+      #curl -d '{"author_email": "r6@gmail.com" , "user_email": "shiva@example.com","gem": "has_me"}' -X POST -H Content-Type:application/json http://localhost:3001/api/data
 		end
   
   end
