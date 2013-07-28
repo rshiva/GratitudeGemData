@@ -9,7 +9,7 @@ module ApiInterface
       end  
 
       get ':id' do
-        GemData.find(params[:id])
+        GemData.find(params[:id]).to_json
       end
       
       params do
