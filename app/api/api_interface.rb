@@ -7,11 +7,16 @@ module ApiInterface
 			get  do
         GemData.all.to_json        
       end  
+
+      get ':id' do
+        GemData.find(params[:id])
+      end
       
       params do
         requires :author_email , type: String , desc: "Author email id" #,, regexp: /\A([\w\!\#\z\%\&\'\*\+\-\/\=\?\\A\`{\|\}\~]+\.)*[\w\+-]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)\z/i 
         requires :user_email , type: String , desc: "User email id" #, regexp: /\A([\w\!\#\z\%\&\'\*\+\-\/\=\?\\A\`{\|\}\~]+\.)*[\w\+-]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)\z/i
       end
+
       post do
         post_params={:author_email => params[:author_email],:user_email => params[:user_email],:gem_name  => params[:gem_name]}
         # didnt used params as variable name because giving error NoMethodError (undefined method `[]' for nil:NilClass):
