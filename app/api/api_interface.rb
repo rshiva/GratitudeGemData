@@ -2,19 +2,23 @@ require 'grape'
 require 'json'
 module ApiInterface
 	class API < Grape::API
+		
+	#version 'v1', using: :path
+        default_format :json
 
-		resources :data do
-			get  do
-        GemData.all.to_json        
-      end  
+       resources :data do
+       	
+	get  do
+          GemData.all       
+        end  
 
       get ':id' do
-        GemData.find(params[:id]).to_json
+        GemData.find(params[:id])
       end
       
       params do
-        requires :author_email , type: String , desc: "Author email id" #,, regexp: /\A([\w\!\#\z\%\&\'\*\+\-\/\=\?\\A\`{\|\}\~]+\.)*[\w\+-]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)\z/i 
-        requires :user_email , type: String , desc: "User email id" #, regexp: /\A([\w\!\#\z\%\&\'\*\+\-\/\=\?\\A\`{\|\}\~]+\.)*[\w\+-]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)\z/i
+        requires :author_email , type: String , desc: "Author email id" ,, regexp: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i 
+        requires :user_email , type: String , desc: "User email id" , regexp: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i 
       end
 
       post do
