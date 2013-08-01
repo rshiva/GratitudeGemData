@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'grape'
-
+gem 'em-http-request'
 
 # Gems used only for assets and not required
 # in production environments by default.

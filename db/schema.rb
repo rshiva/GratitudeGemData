@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724154526) do
+ActiveRecord::Schema.define(:version => 20130801180417) do
 
   create_table "gem_data", :force => true do |t|
     t.string   "author_email"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20130724154526) do
     t.string   "gem_name"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "project_name"
   end
+
+  add_index "gem_data", ["author_email"], :name => "index_gem_data_on_author_email"
+  add_index "gem_data", ["message"], :name => "index_gem_data_on_message"
+  add_index "gem_data", ["user_email"], :name => "index_gem_data_on_user_email"
 
 end
